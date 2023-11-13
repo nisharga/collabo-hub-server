@@ -2,7 +2,8 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import express, { Application, NextFunction, Request, Response } from "express";
 import httpStatus from "http-status";
-
+import globalErrorHandler from './app/middlewares/globalErrorHandler';
+import routes from "./app/routes/index";
 const app: Application = express(); 
 
 app.use(cors());
@@ -12,11 +13,11 @@ app.use(express.urlencoded( {extended: true} ));
 app.use(cookieParser())
 
 // Routes
-//  app.use('/api/v1', routes); 
+app.use('/api/v1', routes); 
 
 
 //global error handler
-//  app.use(globalErrorHandler);
+app.use(globalErrorHandler);
 
 
 //handle not found
