@@ -1,10 +1,18 @@
 /* eslint-disable no-console */
-import { Schema, model } from "mongoose"
-import { IPc } from "./pc.interface"
- 
-const PCSchema = new Schema<IPc>(
+import { Schema, model } from "mongoose";
+import { ICollabdata } from "./collabdata.interface";
+
+const CollabdataSchema = new Schema<ICollabdata>(
   {
-    img: {
+    date: {
+      type: String,
+      required: true,
+    },
+    email: {
+      type: String,
+      required: true,
+    },
+    location: {
       type: String,
       required: true,
     },
@@ -12,29 +20,22 @@ const PCSchema = new Schema<IPc>(
       type: String,
       required: true,
     },
-    category: {
+    phone: {
       type: String,
       required: true,
     },
-    price: {
-      type: Number,
+    title: {
+      type: String,
       required: true,
     },
     status: {
       type: String,
       required: true,
     },
-    rating: {
-      type: Number,
-      required: true,
-    },
-    description: {
-      type: String,
-      required: true,
-    },
   },
   {
     timestamps: true,
-  },
-) 
-export const PCParts = model<IPc>('pc-parts', PCSchema)
+  }
+);
+
+export const Collabdata = model<ICollabdata>('Collabdata', CollabdataSchema);
